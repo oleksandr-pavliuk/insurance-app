@@ -13,10 +13,17 @@ class AdminClientServiceController extends Controller
      */
     public function index()
     {
-        dd(Client::find(2));
+//        $clients = Client::all()->load('services');
+//        foreach ($clients as $client) {
+////            dd($client->services);
+//            foreach ($client->services as $service) {
+//                dd($service->id);
+//                dd([$service->id, $service->name, $service->created_at, $service->updated_at]);
+//            }
+//        }
 
-        return view('admin.clientservice.list',[
-            'records' => ClientService::getRecords()
+        return view('admin.client_service.list',[
+            'records' => Client::all()->load('services')
         ]);
     }
 

@@ -13,12 +13,7 @@ class Client extends Model
 
     public function services(): BelongsToMany
     {
-        return $this->belongsToMany(
-            Service::class,
-            'client_services',
-            'client_id',
-            'service_id'
-        );
+        return $this->belongsToMany(Service::class)->withTimestamps()->as('client_service');
     }
 }
 

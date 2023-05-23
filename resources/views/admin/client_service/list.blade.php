@@ -9,18 +9,18 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($recods as $record)
+    @foreach ($records as $record)
         <tr>
-            <td>{{ $record->client->id }}</a></td>
-            <td>{{ $record->client->first_name }}}</td>
-            <td>{{ $record->client->last_name }}</td>
-            <td>{{ $record->service->id}}</td>
-            <td>{{ $record->service->name }}</td>
+            <td>{{ $record->id }}</a></td>
+            <td>{{ $record->first_name }}</td>
+            <td>{{ $record->last_name }}</td>
+            <td>@foreach($record->services as $key => $service) {{ $service->id }}@if($key != count($record->services) - 1), @endif @endforeach</td>
+            <td>@foreach($record->services as $key => $service) {{ $service->name }}@if($key != count($record->services) - 1), @endif @endforeach</td>
 
             <td>
-                <a class="btn btn-primary" href="/admin/students/{{ $record->id }}/edit">Edit</a>
+                <a class="btn btn-primary" href="/admin/records/{{ $record->id }}/edit">Edit</a>
                 <form style="float:right; padding: 0 15px;"
-                      action="/admin/students/{{ $student->id }}" method="POST">
+                      action="/admin/records/{{ $record->id }}" method="POST">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
                     <button class="btn btn-danger">Delete</button>

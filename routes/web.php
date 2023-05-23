@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminClientServiceController;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return Redirect::to('/admin/clientservice');
+    return Redirect::to('/admin/records');
 });
 
 Route::get('/home', function () {
-    return Redirect::to('/admin/clientservice');
+    return Redirect::to('/admin/records');
 });
-Route::resource('/admin/clientservice', \App\Http\Controllers\AdminClientServiceController::class);
+
+Route::resource('/admin/records', AdminClientServiceController::class);

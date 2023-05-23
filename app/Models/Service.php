@@ -9,13 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Service extends Model
 {
     use HasFactory;
+
     public function clients(): BelongsToMany
     {
-        return $this->belongsToMany(
-            Service::class,
-            'client_services',
-            'service_id',
-            'client_id'
-        );
+        return $this->belongsToMany(Client::class);
     }
 }
